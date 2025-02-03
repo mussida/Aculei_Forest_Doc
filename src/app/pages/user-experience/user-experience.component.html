@@ -1,0 +1,374 @@
+<div class="bg-black text-gray-400 p-8">
+  <div class="max-w-3xl mx-auto">
+    <app-page-title [title]="'User Experience'"></app-page-title>
+    <app-section>
+      Il modello 3D può essere controllato tramite touch (su mobile e tablet),
+      mouse e tastiera, permettendo di modificare la posizione della camera.
+      Ecco i comandi disponibili per l’interazione:
+    </app-section>
+    <app-section>
+      <h3>Mouse</h3>
+      <table class="border-collapse border border-gray-400 w-full text-center">
+        <thead>
+          <tr class="text-green-700">
+            <th class="border border-gray-400 px-4 py-2">
+              Spostamento verso sx
+            </th>
+            <th class="border border-gray-400 px-4 py-2">
+              Spostamento verso dx
+            </th>
+            <th class="border border-gray-400 px-4 py-2">Zoom in</th>
+            <th class="border border-gray-400 px-4 py-2">Zoom out</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-400 px-4 py-2">
+              Click + trascinamento verso sx
+            </td>
+            <td class="border border-gray-400 px-4 py-2">
+              Click + trascinamento verso dx
+            </td>
+            <td class="border border-gray-400 px-4 py-2">Rotella verso su</td>
+            <td class="border border-gray-400 px-4 py-2">Rotella verso giù</td>
+          </tr>
+        </tbody>
+      </table>
+    </app-section>
+    <app-section>
+      <h3>Trackpad</h3>
+      <table class="border-collapse border border-gray-400 w-full text-center">
+        <thead>
+          <tr class="text-green-700">
+            <th class="border border-gray-400 px-4 py-2">
+              Spostamento verso sx
+            </th>
+            <th class="border border-gray-400 px-4 py-2">
+              Spostamento verso dx
+            </th>
+            <th class="border border-gray-400 px-4 py-2">Zoom in</th>
+            <th class="border border-gray-400 px-4 py-2">Zoom out</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-400 px-4 py-2">
+              Click + trascinamento verso sx
+            </td>
+            <td class="border border-gray-400 px-4 py-2">
+              Click + trascinamento verso dx
+            </td>
+            <td class="border border-gray-400 px-4 py-2">
+              Scroll a due dita verso su
+            </td>
+            <td class="border border-gray-400 px-4 py-2">
+              Scroll a due dita verso giù
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </app-section>
+    <app-section>
+      <h3>Tastiera</h3>
+      <table class="border-collapse border border-gray-400 w-full text-center">
+        <thead>
+          <tr class="text-green-700">
+            <th class="border border-gray-400 px-4 py-2">
+              Spostamento verso sx
+            </th>
+            <th class="border border-gray-400 px-4 py-2">
+              Spostamento verso dx
+            </th>
+            <th class="border border-gray-400 px-4 py-2">
+              Spostamento verso su
+            </th>
+            <th class="border border-gray-400 px-4 py-2">
+              Spostamento verso giù
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="">
+            <td class="border border-gray-400 px-4 py-2">
+              <div class="flex justify-center items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+                  />
+                </svg>
+              </div>
+            </td>
+            <td class="border border-gray-400 px-4 py-2 mx-auto">
+              <div class="flex justify-center items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                  />
+                </svg>
+              </div>
+            </td>
+            <td class="border border-gray-400 px-4 py-2">
+              <div class="flex justify-center items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+                  />
+                </svg>
+              </div>
+            </td>
+            <td class="border border-gray-400 px-4 py-2 text-center">
+              <div class="flex justify-center items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+                  />
+                </svg>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </app-section>
+    <app-section>
+      <h3>Touch</h3>
+      <table class="border-collapse border border-gray-400 w-full text-center">
+        <thead>
+          <tr class="text-green-700">
+            <th class="border border-gray-400 px-4 py-2 text-center">
+              Spostamento verso sx
+            </th>
+            <th class="border border-gray-400 px-4 py-2 text-center">
+              Spostamento verso dx
+            </th>
+            <th class="border border-gray-400 px-4 py-2 text-center">
+              Zoom in
+            </th>
+            <th class="border border-gray-400 px-4 py-2 text-center">
+              Zoom out
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="h-12">
+            <td
+              class="border border-gray-400 px-4 py-2 text-center align-middle"
+            >
+              Swipe verso sx
+            </td>
+            <td
+              class="border border-gray-400 px-4 py-2 text-center align-middle"
+            >
+              Swipe verso dx
+            </td>
+            <td
+              class="border border-gray-400 px-4 py-2 text-center align-middle"
+            >
+              Pinch out (dita allargate)
+            </td>
+            <td
+              class="border border-gray-400 px-4 py-2 text-center align-middle"
+            >
+              Pinch in (dita avvicinate)
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </app-section>
+    <app-section-title [title]="'Phi & Theta'"> </app-section-title>
+    <app-section>
+      <div class="prose">
+        <p>
+          L'interazione con il modello 3D avviene attraverso una serie di
+          <strong>event listener</strong>, che catturano gli input dell'utente e
+          aggiornano i parametri <strong>Theta</strong> e
+          <strong>Phi</strong> per controllare la rotazione della visuale.
+        </p>
+        <p>
+          E' stato introdotto un <strong>vincolo su Phi</strong>, impedendo la
+          visualizzazione della parte inferiore del modello.
+        </p>
+        <div class="mt-4">Movimento orizzontale (modifica di Theta)</div>
+        <ul class="list-disc pl-5 text-green-700">
+          <li>
+            <strong class="text-gray-400">Spostamento verso sinistra</strong> →
+            <em>incrementa</em> Theta.
+          </li>
+          <li>
+            <strong class="text-gray-400">Spostamento verso destra</strong> →
+            <em>decrementa</em> Theta.
+          </li>
+        </ul>
+
+        <h3>Movimento verticale (modifica di Phi)</h3>
+        <ul class="list-disc pl-5 text-green-700">
+          <li>
+            <strong class="text-gray-400">Spostamento verso l'alto</strong> →
+            <em>incrementa</em> Phi.
+          </li>
+          <li>
+            <strong class="text-gray-400">Spostamento verso il basso</strong> →
+            <em>decrementa</em> Phi.
+          </li>
+        </ul>
+        <div class="prose mt-4">
+          <h2 class="font-bold">Implementazione dell'Event Listener</h2>
+          <p>
+            Di seguito viene riportato uno degli event listener utilizzati per
+            gestire il movimento della fotocamera tramite il mouse, con un focus
+            sull'implementazione di "mousemove". In questo esempio, il codice
+            cattura il movimento del mouse e aggiorna i parametri di rotazione
+            <strong>theta</strong> e <strong>phi</strong> in base alla posizione
+            del mouse.
+          </p>
+
+          <pre
+            class="bg-zinc-900 text-gray-400 rounded-md overflow-x-auto my-4"
+          >
+<code>
+    {{mouseMove}}
+</code>
+</pre>
+          <p>Questo codice permette di:</p>
+          <ul class="list-disc pl-5">
+            <li>
+              Controllare il movimento orizzontale e verticale della camera
+              tramite il mouse.
+            </li>
+            <li>
+              Limitare l'inclinazione verticale (phi) per evitare la
+              visualizzazione della parte inferiore del modello.
+            </li>
+            <li>Gestire il movimento orizzontale (theta) in modo continuo.</li>
+          </ul>
+        </div>
+      </div>
+    </app-section>
+    <app-section-title [title]="'Distance'"> </app-section-title>
+    <app-section
+      ><div class="prose">
+        <p>
+          Lo zoom della fotocamera viene gestito attraverso la variabile
+          <strong>distance</strong>. L'aumento di questa variabile comporta
+          l'allontanamento della camera dal modello, mentre la sua diminuzione
+          avvicina la camera.
+        </p>
+        <p>
+          Di seguito è riportato l'event listener che gestisce il comportamento
+          di zoom quando l'utente utilizza il trackpad o la rotella del mouse.
+        </p>
+
+        <pre class="bg-zinc-900 text-gray-400 rounded-md overflow-x-auto my-4">
+<code>
+{{mouseZoom}}
+</code>
+        </pre>
+        <p>Questo codice permette di:</p>
+        <ul class="list-disc pl-5">
+          <li>
+            Controllare lo zoom della fotocamera attraverso il movimento della
+            rotella del mouse o il trackpad.
+          </li>
+          <li>
+            Impedire che la fotocamera si avvicini troppo al modello o si
+            allontani oltre una distanza prefissata.
+          </li>
+          <li>
+            Regolare la velocità dello zoom tramite la variabile
+            <strong>zoomSpeed</strong>.
+          </li>
+        </ul>
+      </div>
+    </app-section>
+    <app-section-title [title]="'Pannello di controllo'"></app-section-title>
+    <app-section>
+      <div class="prose">
+        <h2>Pannello di Controllo</h2>
+        <p>
+          Per migliorare l'interazione dell'utente con il modello 3D, è stato
+          introdotto un pannello di controllo personalizzato che mostra in tempo
+          reale il cambiamento delle variabili di controllo sulla prospettiva
+          della scena. Grazie a questo pannello, l'utente può modificare diverse
+          variabili per vedere immediatamente come esse influenzano la
+          visualizzazione del modello.
+        </p>
+
+        <ul class="list-disc pl-5 mt-4">
+          <li>
+            <strong class="text-green-700"
+              >Posizioni delle luci sui 3 assi</strong
+            >
+          </li>
+          <li>
+            <strong class="text-green-700">Distance</strong> (distanza della
+            fotocamera dal modello)
+          </li>
+          <li>
+            <strong class="text-green-700">Phi</strong> (angolo verticale della
+            visuale)
+          </li>
+          <li>
+            <strong class="text-green-700">Theta</strong> (angolo orizzontale
+            della visuale)
+          </li>
+          <li>
+            <strong class="text-green-700">Near</strong> (piano di taglio vicino
+            della fotocamera)
+          </li>
+          <li>
+            <strong class="text-green-700">Far</strong> (piano di taglio lontano
+            della fotocamera)
+          </li>
+          <li>
+            <strong class="text-green-700">Fovy</strong> (campo visivo verticale
+            della fotocamera)
+          </li>
+        </ul>
+
+        <p class="mt-4">
+          Ogni variabile può essere regolata utilizzando gli appositi
+          <code class="text-green-700">input range</code>
+          nel pannello, che aggiornano in tempo reale il comportamento della
+          fotocamera e degli oggetti nella scena. Questo permette all'utente di
+          avere un feedback immediato e di sperimentare vari settaggi per
+          ottenere la visualizzazione desiderata.
+        </p>
+      </div>
+    </app-section>
+  </div>
+</div>

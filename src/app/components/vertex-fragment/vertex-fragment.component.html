@@ -1,0 +1,180 @@
+<div class="bg-black text-gray-400 p-8">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-3xl font-bold mb-4">WebGL</h1>
+    <p class="mb-4">
+      WebGL lavora direttamente con la <strong>GPU</strong>, in particolare ci
+      sono due funzioni che vengono eseguite dalla GPU: il
+      <strong>Vertex Shader</strong> e il <strong>Fragment Shader</strong>. Sono
+      scritte in un linguaggio strettamente tipizzato chiamato
+      <a
+        href="https://webglfundamentals.org/webgl/lessons/webgl-shaders-and-glsl.html"
+        class="text-green-700 underline"
+        >GLSL</a
+      >.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-2">Vertex Shader</h2>
+    <p class="mb-4">
+      Il <strong>Vertex Shader</strong> calcola le posizioni dei vertici e in
+      questo modo definisce la geometria degli oggetti e può rasterizzare
+      diversi tipi di primitive, come punti, linee e triangoli. Mentre
+      rasterizza le primitive, chiama la funzione
+      <strong>Fragment Shader</strong> per calcolare il colore dei pixel.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-2">Fragment Shader</h2>
+    <p class="mb-4">
+      Il <strong>Fragment Shader</strong> calcola il colore dei pixel dopo che
+      il <strong>Vertex Shader</strong> ha calcolato le posizioni dei vertici.
+      Il <strong>Fragment Shader</strong> è chiamato per ogni pixel
+      rasterizzato.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-2">
+      Input e Output degli Shader
+    </h2>
+    <p class="mb-4">
+      Quando si vuole disegnare qualcosa bisogna eseguire il rendering con
+      <code class="bg-zinc-900 p-1 rounded">gl.drawArrays</code> o
+      <code class="bg-zinc-900 p-1 rounded">gl.drawElements</code>, che eseguirà
+      gli shader sulla GPU. I dati possono essere passati agli shader nei
+      seguenti modi:
+    </p>
+
+    <ul class="list-disc list-inside mb-4">
+      <li>
+        <strong>Buffer e attributi</strong>: I buffer sono array di dati binari
+        che solitamente contengono le posizioni dei vertici, i colori, le
+        normali, le coordinate delle texture, ecc. Gli attributi sono variabili
+        che vengono lette dagli shader e che possono essere associate ai buffer.
+        Gli attributi specificano a WebGL come interpretare i dati nei buffer e
+        passarli ai vertex shader.
+      </li>
+      <li>
+        <strong>Uniforms</strong>: .Gli uniforms sono variabili globali
+        impostate prima dell'esecuzione dello shader. Sono valori che rimangono
+        costanti per tutti i vertici durante un singolo disegno (draw call),
+        come un colore ad esempio.
+      </li>
+      <li>
+        <strong>Textures</strong>: Le textures sono array di dati che possono
+        che solitamente contengono immagini.
+      </li>
+      <li>
+        <strong>Varyings</strong>: I varyings sono variabili che vengono passate
+        dal vertex shader al fragment shader.
+      </li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-2">Flusso semplificato</h2>
+    <p class="mb-4">
+      Prima di tutto all'interno del nostro codice sarà necessario definire i
+      due shader, con le rispettive stringhe di codice GLSL. Successivamente, si
+      dovrà iniziare con WebGL, in particolare abbiamo bisogno di un
+      <code class="bg-zinc-900 p-1 rounded">canvas</code>:
+    </p>
+
+    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
+<code>
+    canvas id="canvas"&gt;&lt;/canvas&gt;
+</code>
+</pre>
+
+    <p class="mb-4">
+      Poi in javascript si dovrà inizializzare il contesto WebGL:
+    </p>
+
+    <pre class="bg-zinc-900 text-white rounded overflow-x-auto">
+            <code>
+                {{canvasCode}}
+            </code>
+        </pre>
+    <p class="my-4">
+      Ora bisogna caricare gli shader nella GPU, nel nostro caso sono stati
+      definit concatenando stringhe in JavaScript. Successivamente viene
+      utilizzata la funzione
+      <code class="bg-zinc-900 p-1 rounded">createProgramInfo()</code> della
+      libreria <code class="bg-zinc-900 p-1 rounded">webgl-utils</code> cche
+      prende in input il contesto WebGL e gli shader caricati, crea un programma
+      e li compila restituendo un oggetto con tutte le informazioni necessarie
+      per disegnare
+    </p>
+    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
+<code>const meshProgramInfo = webglUtils.createProgramInfo(gl, [vs, fs]);</code>
+    </pre>
+
+    <p class="mb-4">
+      In seguito vengono presi i dati da un file
+      <code class="bg-zinc-900 p-1 rounded">.OBJ</code> e caricati in un buffer.
+      La funzione
+      <code class="bg-zinc-900 p-1 rounded">createBufferInfoFromArrays()</code>
+      della libreria <code class="bg-zinc-900 p-1 rounded">webgl-utils</code>
+      prende in input il contesto WebGL e i dati, crea un buffer e lo compila
+      restituendo un oggetto con tutte le informazioni necessarie per disegnare.
+    </p>
+    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
+<code>const bufferInfo = webglUtils.createBufferInfoFromArrays(gl, data);</code>
+    </pre>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-2">Rendering</h2>
+    <p class="mb-4">
+      Dopo aver create e definito il canvas dobbiamo mappare le coordinate del
+      clip space alle coordinate in pixel dello schermo utilizzato, e per farlo
+      usiamo una funzione la funzione
+      <code class="bg-zinc-900 p-1 rounded">gl.viewport()</code>:
+    </p>
+    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
+<code>gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);</code>
+    </pre>
+
+    <p class="my-4">
+      i primi due parametri in input sono la posizione orizzontale e verticale
+      in cui inizia il rendering, mentre gli ultimi due parametri sono la
+      larghezza e l'altezza del rendering.
+    </p>
+
+    <p class="my-4">
+      Dopo, nel nostro caso, sono state definite le
+      <code class="bg-zinc-900 p-1 rounded">sharedUniforms</code>, c che
+      contengono i valori che verranno passati agli shader. In seguito, si
+      attiva il programma con questo comando:
+    </p>
+    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
+<code>gl.useProgram(meshProgramInfo.program);</code>
+    </pre>
+
+    <p class="mb-4">
+      Qui viene attivato il programma degli shader che è stato creato in
+      precedenza. Dopodiche' vengono settati gli attributi e gli uniforms con i
+      valori che abbiamo definito in precedenza. In seguito, nel codice viene
+      iterato il <code class="bg-zinc-900 p-1 rounded">bufferInfo</code>
+      (contiene le informazioni sui buffer WebGL che descrivono la geometria
+      dell'oggetto come posizione, normale, texture, ecc.) e
+      <code class="bg-zinc-900 p-1 rounded">material </code>(sono le
+      informazioni sul materiale dell'oggetto come colore, mappa delle texture,
+      riflettività, ecc). In questo ciclo vengono effettuati i seguenti comandi:
+    </p>
+    <div>
+      <ul class="list-disc list-inside mb-4">
+        <li>
+          <code class="bg-zinc-900 p-1 rounded">setBuffersAndAttributes()</code
+          >: setta gli attributi e i buffer per il rendering.
+        </li>
+        <li>
+          <code class="bg-zinc-900 p-1 rounded">setUniforms()</code>: setta gli
+          uniforms per il rendering.
+        </li>
+        <li>
+          <code class="bg-zinc-900 p-1 rounded">drawBufferInfo()</code>: disegna
+          il buffer.
+        </li>
+      </ul>
+    </div>
+
+    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
+    <code>
+        {{shaderVariables}}
+    </code>
+    </pre>
+  </div>
+</div>

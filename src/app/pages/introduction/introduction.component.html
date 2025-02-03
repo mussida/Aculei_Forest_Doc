@@ -1,0 +1,66 @@
+<div class="bg-black text-gray-400 p-8">
+  <div class="max-w-3xl mx-auto">
+    <app-page-title [title]="'Introduzione'"></app-page-title>
+
+    <app-section
+      >Il progetto <span class="text-green-700">Aculei_Forest</span> nasce come
+      una feature all'interno di un progetto chiamato
+      <span class="text-green-700">Aculei</span> (attualmente in fase di
+      sviluppo). L'idea prende vita da una collaborazione tra me e alcuni
+      colleghi/amici, con l'obiettivo di elaborare una collezione di circa
+      16.000 immagini raccolte dal fotografo
+      <app-link
+        [link]="'https://www.tobiafaverio.com'"
+        [text]="'Tobia Faverio'"
+      ></app-link>
+      tramite fototrappole posizionate in diverse zone dell'Umbria.
+    </app-section>
+    <app-section>
+      Il nostro primo compito è stato quello di analizzare le immagini,
+      identificando il maggior numero di informazioni possibili, tra cui la
+      specie <strong>animale</strong>, la <strong>temperatura</strong> e la
+      <strong>fase lunare</strong> ecc., al fine di creare un database completo
+      e utile per la ricerca. Successivamente, abbiamo sviluppato un archivio
+      online, che raccoglie le foto e include anche una sezione interattiva in
+      cui gli utenti, tramite webcam, possono interagire con le immagini.
+    </app-section>
+    <app-section>
+      Arrivati a questo punto, l'idea di creare un mini mondo 3D che
+      rappresentasse le location delle fototrappole e offrisse una mostra
+      virtuale calzava a pennello con il progetto. Così nasce
+      <span class="text-green-700">Aculei_Forest</span>.
+    </app-section>
+    <app-section-title title="Tecnologie utilizzate"></app-section-title>
+    <app-section>
+      Il modello 3D di <strong>Aculei_Forest</strong> è stato realizzato in
+      <app-link
+        [link]="'https://www.blender.org/'"
+        [text]="'Blender'"
+      ></app-link
+      >, dove è stata creata una foresta <i>low poly</i>. All'interno di
+      <b>Blender</b>
+      sono stati definiti i materiali e applicate le texture, per poi esportare
+      il modello in formato .obj. Questo file è stato successivamente importato
+      nel progetto e convertito <b>WebGL</b> per la visualizzazione nel browser.
+      Il frontend è stato sviluppato utilizzando <b>JavaScript</b> e
+      <b>HTML</b>, utilizzando la libreria <b>WebGL</b> per il rendering
+      grafico. Per lavorare meglio e più velocemente sul modello sono state
+      utilizzate anche le seguenti librerie:
+      <app-link
+        link="https://webglfundamentals.org/webgl/resources/webgl-utils.js"
+        text="m4.js"
+      ></app-link>
+      e
+      <app-link
+        link="https://webglfundamentals.org/webgl/resources/m4.js"
+        text="webgl-utils.js"
+      ></app-link
+      >. Per quanto riguarda lo styling, è stato utilizzato il framework
+      <app-link link="https://tailwindcss.com/" text="Tailwind CSS"></app-link>.
+    </app-section>
+    <app-section-image
+      [url]="'assets/blender.png'"
+      [caption]="'Modello su Blender'"
+    ></app-section-image>
+  </div>
+</div>

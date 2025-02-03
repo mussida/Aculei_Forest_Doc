@@ -1,0 +1,91 @@
+@if (isOpen()) {
+<div
+  @sidebarAnimation
+  class="flex grow flex-col gap-y-5 overflow-y-auto bg-black px-6 pb-4 h-full absolute"
+>
+  <div class="flex h-16 shrink-0 items-center">Aculei_Forest Doc</div>
+  <nav class="flex flex-1 flex-col w-64">
+    <ul role="list" class="flex flex-1 flex-col gap-y-7">
+      <li>
+        <ul role="list" class="-mx-2 space-y-1">
+          @for (section of sections(); track $index) {
+          <li>
+            <div
+              [ngClass]="{
+                'text-green-600 bg-black-100': rla.isActive,
+                }"
+              class="group flex justify-between gap-x-3 rounded-md text-sm/6 font-semibold text-gray-700 hover:text-green-600"
+            >
+              <a
+                routerLinkActive
+                #rla="routerLinkActive"
+                [routerLink]="[section.route]"
+                (click)="closeSidebar()"
+                class="flex items-center gap-x-3 py-1 px-3 w-full"
+              >
+                <svg
+                  class="size-6 shrink-0 text-gray-400 group-hover:text-green-600"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+                {{ section.name }}
+              </a>
+              <div
+                class="flex items-center py-2 px-3 rounded-e-md cursor-pointer"
+                (click)="toggleSubsection(section)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-4 ransform duration-200"
+                  [ngClass]="{
+                    'rotate-90': isSubsectionVisible(section),
+                    'rotate-0': !isSubsectionVisible(section),
+                  }"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                  />
+                </svg>
+              </div>
+            </div>
+            @if(isSubsectionVisible(section)) { @for (subsection of
+            section.subsections; track $index) {
+            <a
+              (click)="toggleSubsection(section)"
+              routerLinkActive
+              #rlaSubsection="routerLinkActive"
+              [routerLink]="subsection.route"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="{
+                  'text-green-600': rlaSubsection.isActive,
+                  }"
+            >
+              <div (click)="closeSidebar()" class="text-xs px-4 mt-2">
+                {{ subsection.name }}
+              </div>
+            </a>
+            } }
+          </li>
+          }
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+}

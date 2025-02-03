@@ -1,0 +1,133 @@
+<div class="bg-black text-gray-400 p-8">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-3xl font-bold mb-4">Caricamento di un file .OBJ</h1>
+    <p>
+      I file
+      <a
+        href="https://paulbourke.net/dataformats/obj/"
+        class="text-green-700 underline"
+        >.OBJ</a
+      >
+      descrivono un oggetto 3D. Ogni riga contiene diverse informazioni come le
+      seguenti:
+    </p>
+    <ul class="list-disc list-inside my-4">
+      <li>
+        <code class="bg-zinc-900 px-1 rounded">v</code>: definisce i vertici
+        (posizioni nello spazio 3D).
+      </li>
+      <li>
+        <code class="bg-zinc-900 px-1 rounded">vt</code>: definisce le
+        coordinate di texture (mapping 2D su una superficie 3D).
+      </li>
+      <li>
+        <code class="bg-zinc-900 px-1 rounded">vn</code>: definisce i vettori
+        normali (direzioni per l'illuminazione).
+      </li>
+      <li>
+        <code class="bg-zinc-900 px-1 rounded">f</code>: definisce le facce.
+      </li>
+    </ul>
+    <p>
+      All'interno del mio progetto, seguendo la guida fornita da
+      <a
+        href="https://webglfundamentals.org/webgl/lessons/webgl-load-obj.html"
+        class="text-green-700 underline"
+        >WebGL Fundamentals</a
+      >, è stata implementata la funzione
+      <code class="bg-zinc-900 px-1 rounded">parseOBJ</code> che legge e
+      interpreta il contenuto del file <code>.OBJ</code>.
+    </p>
+    <p>
+      Il file viene caricato come file di testo, poi suddiviso in righe, e ogni
+      riga viene analizzata in base al comando (
+      <code class="bg-zinc-900 p-1 rounded">v</code>,
+      <code class="bg-zinc-900 p-1 rounded">vt</code>,
+      <code class="bg-zinc-900 p-1 rounded">vn</code>, ecc.) e alle
+      corrispondenti coordinate. Di seguito è mostrato uno snippet di codice
+      commentato per facilitarne la comprensione:
+    </p>
+    <p class="mb-4">
+      Di seguito è mostrato uno snippet di codice commentato per facilitarne la
+      comprensione:
+    </p>
+    <pre class="bg-zinc-900 text-gray-400 p-4 rounded-md overflow-x-auto">
+<code>{{parser}}</code>
+        </pre>
+    <h2 class="text-2xl font-semibold mt-6 mb-2">Esempio di file .OBJ</h2>
+    <p class="mb-4">
+      Se vogliamo immaginarlo meglio, pensiamo a questo frammento di righe che
+      potrebbe essere preso da un file
+      <code class="bg-zinc-900 p-1 rounded">.OBJ</code>:
+    </p>
+    <pre class="bg-zinc-900 text-gray-400 p-4 rounded-md overflow-x-auto">
+    <code>
+v 0.0 0.0 0.0
+vn 1.0 1.0 1.0
+f 1//1 2//1 3//1
+    </code>
+    </pre>
+    <h2 class="text-2xl font-semibold mt-6 mb-2">Tabella di parsing</h2>
+    <p class="mb-4">
+      La seguente tabella mostra come viene interpretata ogni riga in termini di
+      <strong>Keyword</strong> e <strong>Keyword</strong> grazie alla
+      <strong>regex</strong>:
+    </p>
+    <table class="w-full border-collapse border border-gray-300 mt-4">
+      <thead>
+        <tr class="bg-900-300">
+          <th class="border border-green-700 px-4 py-2">Riga</th>
+          <th class="border border-green-700 px-4 py-2">Keyword</th>
+          <th class="border border-green-700 px-4 py-2">Argomenti</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-green-700 px-4 py-2">v 0.0 0.0 0.0</td>
+          <td class="border border-green-700 px-4 py-2">v</td>
+          <td class="border border-green-700 px-4 py-2">0.0 0.0 0.0</td>
+        </tr>
+        <tr>
+          <td class="border border-green-700 px-4 py-2">vn 1.0 1.0 1.0</td>
+          <td class="border border-green-700 px-4 py-2">vn</td>
+          <td class="border border-green-700 px-4 py-2">1.0 1.0 1.0</td>
+        </tr>
+        <tr>
+          <td class="border border-green-700 px-4 py-2">f 1//1 2//1 3//1</td>
+          <td class="border border-green-700 px-4 py-2">f</td>
+          <td class="border border-green-700 px-4 py-2">1//1 2//1 3//1</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="my-4">
+      Questi dati vengono raccolti e salvati in 3 array diversi, dopodiche'
+      questi vengono ancora raggruppati in un unico array
+      <code class="bg-zinc-900 p-1 rounded">objVertexData</code>, come si puo'
+      vedere dal codice:
+    </p>
+    <pre class="bg-zinc-900 text-gray-400 p-4 rounded-md overflow-x-auto">
+<code>
+    {{parseObj}}
+</code>
+        </pre>
+    <p class="my-4">
+      Infine, una funzione
+      <code class="bg-zinc-900 p-1 rounded">addVertex()</code> converte questi
+      dati in un altro array
+      <code class="bg-zinc-900 p-1 rounded">webglVertexData</code>.
+    </p>
+    <pre class="bg-zinc-900 text-gray-400 rounded-md overflow-x-auto">
+      <code>{{addVertex}}</code>
+    </pre>
+    <p class="my-4">
+      In questo modo `e gesitito il parsing e la conversione dei dati dal
+      formato <code class="bg-zinc-900 p-1 rounded">.OBJ</code> al formato
+      utilizzato da
+      <a
+        href="https://paulbourke.net/dataformats/obj/"
+        class="text-green-700 underline"
+        >WebGL</a
+      >
+    </p>
+  </div>
+</div>
