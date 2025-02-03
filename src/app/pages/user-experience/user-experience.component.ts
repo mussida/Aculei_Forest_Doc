@@ -3,6 +3,7 @@ import { PageTitleComponent } from '../../components/page-title/page-title.compo
 import { SectionComponent } from '../../components/section/section.component';
 import { DashboardComponent } from '../../../components/dashboard/dashboard.component';
 import { SectionTitleComponent } from '../../components/section-title/section-title.component';
+import { VideoComponent } from '../../components/video/video.component';
 
 @Component({
   selector: 'app-user-experience',
@@ -12,6 +13,7 @@ import { SectionTitleComponent } from '../../components/section-title/section-ti
     SectionComponent,
     DashboardComponent,
     SectionTitleComponent,
+    VideoComponent,
   ],
   templateUrl: './user-experience.component.html',
   styleUrl: './user-experience.component.css',
