@@ -1,1 +1,32 @@
-<router-outlet></router-outlet>
+@if (!isChildRouteActive) {
+<div class="bg-black text-gray-400 p-8">
+  <div class="max-w-3xl mx-auto">
+    <app-page-title
+      [title]="'Proiezione prospetica del modello 3D'"
+    ></app-page-title>
+    <app-section>
+      <div class="prose">
+        <div>
+          In questa sezione verranno trattati il funzionamento del
+          <strong>vertex shader</strong> e del <strong>fragment shader</strong>,
+          e il processo di caricamento di un file <strong>.obj</strong> per la
+          sua proiezione in WebGL. Ho ritenuto opportuno trattare questi
+          argomenti con qualche snippet di codice per facilitare la comprensione
+          dell'implementazione.
+        </div>
+      </div>
+    </app-section>
+    <app-section>
+      <div class="flex sm:flex-row flex-col gap-2 justify-start">
+          <a routerLinkActive [routerLink]="'Vertex-fragment'" class="p-2 border border-green-700 hover:bg-green-950 text-gray-400 rounded">
+            Vertex Shader e Fragment Shader
+          </a>
+          <a routerLinkActive [routerLink]="'Obj-Loader'" class="p-2 border border-green-700 hover:bg-green-950 text-gray-400 rounded">
+            Caricamento di un file .OBJ
+          </a>
+      </div>
+    </app-section>
+  </div>
+</div>
+}
+<router-outlet (activate)="onActivate($event)"></router-outlet>
