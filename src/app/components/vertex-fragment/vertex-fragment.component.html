@@ -74,35 +74,36 @@
       <code class="bg-zinc-900 p-1 rounded">canvas</code>:
     </p>
 
-    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
-<code>
-    canvas id="canvas"&gt;&lt;/canvas&gt;
-</code>
+    <pre class="bg-zinc-900 text-white rounded overflow-x-auto mb-4">
+  <code>
+  canvas id="canvas"&gt;&lt;/canvas&gt;
+  </code>
 </pre>
 
     <p class="mb-4">
       Poi in javascript si dovrà inizializzare il contesto WebGL:
     </p>
 
-    <pre class="bg-zinc-900 text-white rounded overflow-x-auto">
-            <code>
-                {{canvasCode}}
-            </code>
-        </pre>
+<pre class="bg-zinc-900 text-white rounded overflow-x-auto">
+    <code>
+        {{canvasCode}}
+    </code>
+</pre>
     <p class="my-4">
       Ora bisogna caricare gli shader nella GPU, nel nostro caso sono stati
-      definit concatenando stringhe in JavaScript. Successivamente viene
+      definite concatenando stringhe in JavaScript. Successivamente viene
       utilizzata la funzione
       <code class="bg-zinc-900 p-1 rounded">createProgramInfo()</code> della
-      libreria <code class="bg-zinc-900 p-1 rounded">webgl-utils</code> cche
+      libreria <code class="bg-zinc-900 p-1 rounded">webgl-utils</code> che
       prende in input il contesto WebGL e gli shader caricati, crea un programma
       e li compila restituendo un oggetto con tutte le informazioni necessarie
-      per disegnare
+      per disegnare:
     </p>
-    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
-<code>const meshProgramInfo = webglUtils.createProgramInfo(gl, [vs, fs]);</code>
-    </pre>
+<pre class="bg-zinc-900 text-white rounded overflow-x-auto mb-4">
 
+  <code>const meshProgramInfo = webglUtils.createProgramInfo(gl, [vs, fs]);</code>
+
+</pre>
     <p class="mb-4">
       In seguito vengono presi i dati da un file
       <code class="bg-zinc-900 p-1 rounded">.OBJ</code> e caricati in un buffer.
@@ -112,10 +113,10 @@
       prende in input il contesto WebGL e i dati, crea un buffer e lo compila
       restituendo un oggetto con tutte le informazioni necessarie per disegnare.
     </p>
-    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
-<code>const bufferInfo = webglUtils.createBufferInfoFromArrays(gl, data);</code>
-    </pre>
+    <pre class="bg-zinc-900 text-white rounded overflow-x-auto mb-4">
 
+  <code>const bufferInfo = webglUtils.createBufferInfoFromArrays(gl, data);</code>
+    </pre>
     <h2 class="text-2xl font-semibold mt-6 mb-2">Rendering</h2>
     <p class="mb-4">
       Dopo aver create e definito il canvas dobbiamo mappare le coordinate del
@@ -123,10 +124,10 @@
       usiamo una funzione la funzione
       <code class="bg-zinc-900 p-1 rounded">gl.viewport()</code>:
     </p>
-    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
-<code>gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);</code>
-    </pre>
+    <pre class="bg-zinc-900 text-white rounded overflow-x-auto mb-4">
 
+  <code>gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);</code>
+    </pre>
     <p class="my-4">
       i primi due parametri in input sono la posizione orizzontale e verticale
       in cui inizia il rendering, mentre gli ultimi due parametri sono la
@@ -135,14 +136,14 @@
 
     <p class="my-4">
       Dopo, nel nostro caso, sono state definite le
-      <code class="bg-zinc-900 p-1 rounded">sharedUniforms</code>, c che
+      <code class="bg-zinc-900 p-1 rounded">sharedUniforms</code>, che
       contengono i valori che verranno passati agli shader. In seguito, si
       attiva il programma con questo comando:
     </p>
-    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
-<code>gl.useProgram(meshProgramInfo.program);</code>
-    </pre>
+    <pre class="bg-zinc-900 text-white prounded overflow-x-auto mb-4">
 
+  <code>gl.useProgram(meshProgramInfo.program);</code>
+    </pre>
     <p class="mb-4">
       Qui viene attivato il programma degli shader che è stato creato in
       precedenza. Dopodiche' vengono settati gli attributi e gli uniforms con i
@@ -171,10 +172,10 @@
       </ul>
     </div>
 
-    <pre class="bg-zinc-900 text-white p-2 rounded overflow-x-auto mb-4">
-    <code>
-        {{shaderVariables}}
-    </code>
+    <pre class="bg-zinc-900 text-white rounded overflow-x-auto mb-4">
+<code>
+    {{shaderVariables}}
+</code>
     </pre>
   </div>
 </div>
