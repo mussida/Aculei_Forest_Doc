@@ -6,7 +6,7 @@ import { ObjLoaderComponent } from './components/obj-loader/obj-loader.component
 import { UserExperienceComponent } from './pages/user-experience/user-experience.component';
 
 export const routes: Routes = [
-  { path: '', component: IntroductionComponent },
+  { path: '', component: IntroductionComponent, pathMatch: 'full' },
   { path: 'User-Experience', component: UserExperienceComponent },
 
   {

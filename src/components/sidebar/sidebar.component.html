@@ -19,6 +19,7 @@
                   routerLinkActive
                   #rla="routerLinkActive"
                   [routerLink]="[section.route]"
+                  [routerLinkActiveOptions]="{ exact: true }"
                   class="flex items-center gap-x-3 py-1 px-3 w-full select-none"
                   (click)="toggleSubsection(section)"
                 >

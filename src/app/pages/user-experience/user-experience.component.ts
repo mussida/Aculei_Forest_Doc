@@ -4,6 +4,7 @@ import { SectionComponent } from '../../components/section/section.component';
 import { DashboardComponent } from '../../../components/dashboard/dashboard.component';
 import { SectionTitleComponent } from '../../components/section-title/section-title.component';
 import { VideoComponent } from '../../components/video/video.component';
+import { SectionImageComponent } from '../../components/section-image/section-image.component';
 
 @Component({
   selector: 'app-user-experience',
@@ -14,6 +15,7 @@ import { VideoComponent } from '../../components/video/video.component';
     DashboardComponent,
     SectionTitleComponent,
     VideoComponent,
+    SectionImageComponent,
   ],
   templateUrl: './user-experience.component.html',
   styleUrl: './user-experience.component.css',

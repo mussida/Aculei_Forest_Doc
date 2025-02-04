@@ -21,25 +21,13 @@
                 #rla="routerLinkActive"
                 [routerLink]="[section.route]"
                 (click)="closeSidebar()"
+                [routerLinkActiveOptions]="{ exact: true }"
                 class="flex items-center gap-x-3 py-1 px-3 w-full"
               >
-                <svg
-                  class="size-6 shrink-0 text-gray-400 group-hover:text-green-600"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                </svg>
                 {{ section.name }}
               </a>
+              @if (section.subsections.length > 0) {
+
               <div
                 class="flex items-center py-2 px-3 rounded-e-md cursor-pointer"
                 (click)="toggleSubsection(section)"
@@ -63,6 +51,7 @@
                   />
                 </svg>
               </div>
+              }
             </div>
             @if(isSubsectionVisible(section)) { @for (subsection of
             section.subsections; track $index) {
