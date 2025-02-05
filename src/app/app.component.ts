@@ -35,6 +35,11 @@ export class AppComponent {
       subsections: [],
     },
     {
+      name: 'Illuminazione e Shading',
+      route: 'Illuminazione',
+      subsections: [],
+    },
+    {
       name: 'Proiezione prospettica modello 3D',
       route: 'Proiezione',
       subsections: [

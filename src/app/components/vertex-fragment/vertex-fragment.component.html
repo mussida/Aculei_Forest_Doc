@@ -74,7 +74,7 @@
       <code class="bg-zinc-900 p-1 rounded">canvas</code>:
     </p>
 
-    <pre class="bg-zinc-900 text-white rounded overflow-x-auto mb-4">
+    <pre class="bg-zinc-900 text-gray-400 rounded overflow-x-auto mb-4">
   <code>
   canvas id="canvas"&gt;&lt;/canvas&gt;
   </code>
@@ -84,7 +84,7 @@
       Poi in javascript si dovrà inizializzare il contesto WebGL:
     </p>
 
-<pre class="bg-zinc-900 text-white rounded overflow-x-auto">
+<pre class="bg-zinc-900 text-gray-400 rounded overflow-x-auto">
     <code>
         {{canvasCode}}
     </code>
@@ -99,7 +99,7 @@
       e li compila restituendo un oggetto con tutte le informazioni necessarie
       per disegnare:
     </p>
-<pre class="bg-zinc-900 text-white rounded overflow-x-auto mb-4">
+<pre class="bg-zinc-900 text-gray-400 rounded overflow-x-auto mb-4">
 
   <code>const meshProgramInfo = webglUtils.createProgramInfo(gl, [vs, fs]);</code>
 
@@ -113,7 +113,7 @@
       prende in input il contesto WebGL e i dati, crea un buffer e lo compila
       restituendo un oggetto con tutte le informazioni necessarie per disegnare.
     </p>
-    <pre class="bg-zinc-900 text-white rounded overflow-x-auto mb-4">
+    <pre class="bg-zinc-900 text-gray-400 rounded overflow-x-auto mb-4">
 
   <code>const bufferInfo = webglUtils.createBufferInfoFromArrays(gl, data);</code>
     </pre>
@@ -124,7 +124,7 @@
       usiamo una funzione la funzione
       <code class="bg-zinc-900 p-1 rounded">gl.viewport()</code>:
     </p>
-    <pre class="bg-zinc-900 text-white rounded overflow-x-auto mb-4">
+    <pre class="bg-zinc-900 text-gray-400 rounded overflow-x-auto mb-4">
 
   <code>gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);</code>
     </pre>
@@ -140,7 +140,7 @@
       contengono i valori che verranno passati agli shader. In seguito, si
       attiva il programma con questo comando:
     </p>
-    <pre class="bg-zinc-900 text-white prounded overflow-x-auto mb-4">
+    <pre class="bg-zinc-900 text-gray-400 prounded overflow-x-auto mb-4">
 
   <code>gl.useProgram(meshProgramInfo.program);</code>
     </pre>
@@ -172,7 +172,7 @@
       </ul>
     </div>
 
-    <pre class="bg-zinc-900 text-white rounded overflow-x-auto mb-4">
+    <pre class="bg-zinc-900 text-gray-400 rounded overflow-x-auto mb-4">
 <code>
     {{shaderVariables}}
 </code>

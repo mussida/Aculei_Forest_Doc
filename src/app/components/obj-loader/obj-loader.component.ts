@@ -56,14 +56,14 @@ const keywords = {
 };`;
 
   parseObj = `
-function parseOBJ(text) {
+  function parseOBJ(text) {
 
-// Array per memorizzare i dati grezzi degli .OBJ.
-  const objPositions = [[0, 0, 0]];
-  const objTexcoords = [[0, 0]];
-  const objNormals = [[0, 0, 0]];
+  // Array per memorizzare i dati grezzi degli .OBJ.
+    const objPositions = [[0, 0, 0]];
+    const objTexcoords = [[0, 0]];
+    const objNormals = [[0, 0, 0]];
 
-  const objVertexData = [objPositions, objTexcoords, objNormals];
+    const objVertexData = [objPositions, objTexcoords, objNormals];
 `;
 
   addVertex = `

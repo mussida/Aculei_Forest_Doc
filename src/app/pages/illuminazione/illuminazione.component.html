@@ -1,0 +1,104 @@
+<div class="bg-black text-gray-400 p-8">
+  <div class="max-w-3xl mx-auto">
+    <app-page-title [title]="'Illuminazione e Shading'"></app-page-title>
+    <app-section>
+      Lo shading è il processo di illuminazione (<i>lighting</i>) e di
+      determinazione del colore ogni pixel del modello. All'interno del progetto
+      è stati implementato il modello di illuminazione di
+      <span class="font-bold text-green-700">Phong Shading</span>. Esso si basa
+      principalmente su 3 componenti fondamentali:
+      <ul class="my-4">
+        <li>
+          <span class="font-bold text-green-700">Ambient</span>, luce
+          ambientale.
+        </li>
+        <li>
+          <span class="font-bold text-green-700">Diffuse</span>, luce diffusa.
+        </li>
+        <li>
+          <span class="font-bold text-green-700">Specular</span>, luce
+          speculare.
+        </li>
+      </ul>
+      Per l'implementazione è stato presto spunto dal seguente
+      <app-link
+        [link]="'https://www.cs.toronto.edu/~jacobson/phong-demo/'"
+        [text]="'sito web'"
+      ></app-link
+      >.
+    </app-section>
+    <app-section>
+      All'interno del codice vegono normmalizzati i seguenti vettori:
+      <pre class="bg-zinc-900 text-gray-400 rounded overflow-x-auto mb-4 my-4">
+<code>{{normalizeVector}}</code>
+    </pre>
+      Il primo rappresenta
+      <span class="text-green-700">normale del frammento</span> e il secondo la
+      <span class="text-green-700">direzione della luce</span>. In seguito
+      basandosi sulla legge di Lambert viene calcolata la variabile
+      <code class="bg-zinc-900 p-1 rounded">Lambertian</code>:
+      <pre class="bg-zinc-900 text-gray-400 rounded overflow-x-auto mb-4 my-4">
+
+  <code>float lambertian = max(dot(N, L), 0.0);</code>
+    </pre>
+      all'interno di questo snippet di codice viene calcolato il prodotto
+      scalare tra la normale del frammento e la direzione della luce, in
+      particolare viene calcolato il
+      <span class="text-green-700">
+        coseno dell'angolo tra la superficie e la luce</span>. L'operatore <code class="bg-zinc-900 p-1 rounded">max</code>, controlla
+      se la luce è maggiore di
+      <code class="bg-zinc-900 p-1 rounded">90°</code> per non farla vedere. Poi
+      c'è questo snippet di codice:
+      <pre class="bg-zinc-900 text-gray-400 rounded overflow-x-auto mb-4 my-4">
+<code>{{normalizeVector}}</code>
+    </pre>
+      Questa parte di codice calcola la
+      <span class="text-green-700">luce speculare</span>. Viene calcolato il
+      vettore riflesso della luce, il vettore dell'osservatore e infine con
+      entrambi si ricava l'angolo di riflessione. Poi vengono definite:
+      <ul>
+        <li class="my-2">
+          <code class="bg-zinc-900 p-1 rounded text-green-700">diffuseMapColor</code>, calcola
+          il colore dalla texture di diffusione (diffuseMap) usando le
+          coordinate v_texcoord.
+        </li>
+        <li class="my-2">
+          <code class="bg-zinc-900 p-1 rounded text-green-700">effectiveDiffuse</code>, calcola
+          il colore della texture con il colore base dell'oggetto (diffuse) e il
+          colore del vertice (v_color).
+        </li>
+        <li class="my-2">
+          <code class="bg-zinc-900 p-1 rounded text-green-700">specularMapColor</code>, calcola
+          il colore dalla texture speculare (specularMap) usando le coordinate
+          v_texcoord.
+        </li>
+        <li class="my-2">
+          <code class="bg-zinc-900 p-1 rounded text-green-700">effectiveSpecular</code>,
+          moltiplica il valore della texture speculare con la luce speculare
+          calcolata e il colore speculare dell'oggetto.
+        </li>
+      </ul>
+      Infine, viene calcolato il colore finale:
+      <pre class="bg-zinc-900 text-gray-400 rounded overflow-x-auto mb-4 my-4">
+    <code>{{gl_FragColor}}</code>
+    </pre>
+      In questo ultimo frammento abbiamo i seguenti parametri:
+      <ul>
+        <li class="my-2">
+          <code class="bg-zinc-900 p-1 rounded text-green-700">Ka</code>, intensità della luce
+          ambientale.
+        </li>
+        <li class="my-2">
+          <code class="bg-zinc-900 p-1 rounded text-green-700">Kd</code>, intensità della luce
+          diffusa.
+        </li>
+        <li class="my-2">
+          <code class="bg-zinc-900 p-1 rounded text-green-700">Ks</code>, intensità della luce
+          speculare.
+        </li>
+        <li class="my-2">
+          <code class="bg-zinc-900 p-1 rounded text-green-700">emissive</code>, luce emessa dall'oggetto.
+      </ul>
+    </app-section>
+  </div>
+</div>
